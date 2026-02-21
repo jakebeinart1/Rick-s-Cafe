@@ -82,7 +82,7 @@ export function AboutClient({ settings }: Props) {
             The Story
           </motion.p>
           <motion.h1
-            className="font-serif text-5xl font-bold leading-tight md:text-7xl"
+            className="font-heading text-5xl font-bold leading-tight md:text-7xl"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
@@ -97,7 +97,7 @@ export function AboutClient({ settings }: Props) {
       {/* Origin Story */}
       <section className="mx-auto max-w-3xl px-6 py-24">
         <RevealText>
-          <p className="font-serif text-2xl leading-relaxed text-muted md:text-3xl">
+          <p className="font-heading text-2xl leading-relaxed text-muted md:text-3xl">
             Rick&apos;s Caf&eacute; started as a Hawaiian-themed fundraiser. Tiki
             torches, school community, and a vibe of bringing people together
             over food.
@@ -116,7 +116,7 @@ export function AboutClient({ settings }: Props) {
       {/* Timeline of the Name */}
       <section className="mx-auto max-w-4xl px-6 py-24">
         <RevealText>
-          <h2 className="mb-16 text-center font-serif text-3xl font-bold md:text-5xl">
+          <h2 className="mb-16 text-center font-heading text-3xl font-bold md:text-5xl">
             Timeline of the Name
           </h2>
         </RevealText>
@@ -139,14 +139,13 @@ export function AboutClient({ settings }: Props) {
               transition={{ delay: i * 0.15, duration: 0.6 }}
             >
               {/* Year dot */}
-              <div className="absolute left-8 flex h-4 w-4 -translate-x-1/2 items-center justify-center md:left-1/2">
-                <div className="h-3 w-3 rounded-full bg-accent" />
-                <div className="absolute h-3 w-3 animate-ping rounded-full bg-accent/30" />
+              <div className="absolute left-8 flex -translate-x-1/2 items-center justify-center md:left-1/2">
+                <div className="h-2 w-2 bg-accent" />
               </div>
 
               {/* Content */}
               <div className="ml-16 md:ml-0 md:w-[calc(50%-2rem)]">
-                <span className="font-serif text-4xl font-bold text-accent">
+                <span className="font-mono text-4xl font-bold tracking-tight text-accent">
                   {event.year}
                 </span>
                 <h3 className="mt-2 text-xl font-semibold">{event.title}</h3>
@@ -165,7 +164,7 @@ export function AboutClient({ settings }: Props) {
       {/* Closing */}
       <section className="py-32 text-center">
         <RevealText>
-          <p className="mx-auto max-w-lg font-serif text-2xl leading-relaxed">
+          <p className="mx-auto max-w-lg font-heading text-2xl leading-relaxed">
             Every meal tells a story.
             <br />
             This is where we write them down.

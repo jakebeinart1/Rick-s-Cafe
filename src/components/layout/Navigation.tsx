@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
 import { Home, Clock, Search, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -19,14 +18,13 @@ export function Navigation() {
   return (
     <>
       {/* Desktop: Fixed top bar */}
-      <header className="fixed top-0 left-0 right-0 z-50 hidden md:block backdrop-blur-sm bg-background/50">
+      <header className="fixed top-0 left-0 right-0 z-50 hidden md:block backdrop-blur-sm bg-background/80">
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-8 py-6">
-          <Link
-            href="/"
-            className="font-serif text-2xl tracking-tight"
-            style={{ fontStyle: "italic" }}
-          >
-            Rick&apos;s Caf&eacute;
+          <Link href="/" className="flex items-center gap-2">
+            <span className="font-heading text-2xl font-bold tracking-tight">
+              Rick&apos;s Caf&eacute;
+            </span>
+            <span className="font-mono text-xs text-muted">HTX</span>
           </Link>
           <div className="flex items-center gap-8">
             {navItems.map((item) => (
@@ -34,20 +32,15 @@ export function Navigation() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "relative text-[11px] uppercase tracking-[0.2em] transition-colors",
+                  "relative text-sm tracking-wide transition-colors",
                   pathname === item.href
                     ? "text-foreground"
                     : "text-foreground/40 hover:text-foreground/70"
                 )}
-                style={{ fontFamily: "var(--font-display-var)" }}
               >
                 {item.label}
                 {pathname === item.href && (
-                  <motion.div
-                    layoutId="nav-underline"
-                    className="absolute -bottom-1 left-0 right-0 h-px bg-accent"
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                  />
+                  <div className="absolute -bottom-1 left-0 right-0 h-px bg-accent" />
                 )}
               </Link>
             ))}
@@ -56,7 +49,7 @@ export function Navigation() {
       </header>
 
       {/* Mobile: Bottom-docked navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-foreground/10 bg-background/90 backdrop-blur-xl md:hidden">
+      <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-foreground/10 bg-background/90 backdrop-blur-xl rounded-t-lg md:hidden">
         <div className="flex items-center justify-around py-2 pb-[env(safe-area-inset-bottom)]">
           {navItems.map((item) => {
             const Icon = item.icon;
@@ -67,14 +60,11 @@ export function Navigation() {
                 href={item.href}
                 className={cn(
                   "flex flex-col items-center gap-1 px-4 py-2 transition-colors",
-                  isActive ? "text-accent" : "text-foreground/30"
+                  isActive ? "text-foreground" : "text-foreground/30"
                 )}
               >
                 <Icon size={20} strokeWidth={isActive ? 2 : 1.5} />
-                <span
-                  className="text-[10px] uppercase tracking-wider"
-                  style={{ fontFamily: "var(--font-display-var)" }}
-                >
+                <span className="font-mono text-[10px] uppercase tracking-wider">
                   {item.label}
                 </span>
               </Link>

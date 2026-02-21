@@ -23,7 +23,7 @@ export function HeroImage({ image, restaurantName }: HeroImageProps) {
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
 
   return (
-    <div ref={ref} className="photo-vignette relative h-[70vh] w-full overflow-hidden md:h-[85vh]">
+    <div ref={ref} className="relative h-[70vh] w-full overflow-hidden md:h-[85vh]">
       <motion.div className="absolute inset-0" style={{ y, scale }}>
         <Image
           src={urlFor(image).width(1920).quality(85).url()}
@@ -35,22 +35,8 @@ export function HeroImage({ image, restaurantName }: HeroImageProps) {
         />
       </motion.div>
 
-      {/* Warm color gradient overlay */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background: "linear-gradient(to top, var(--background) 0%, var(--background) 5%, transparent 40%)",
-        }}
-      />
-
-      {/* Side vignettes for cinematic feel */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background: "linear-gradient(90deg, var(--background) 0%, transparent 15%, transparent 85%, var(--background) 100%)",
-          opacity: 0.5,
-        }}
-      />
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
 
       {/* Title */}
       <motion.div
@@ -58,8 +44,7 @@ export function HeroImage({ image, restaurantName }: HeroImageProps) {
         style={{ opacity }}
       >
         <motion.h1
-          className="font-serif text-4xl leading-tight md:text-7xl"
-          style={{ fontStyle: "italic" }}
+          className="font-heading text-4xl font-bold leading-tight md:text-7xl"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}

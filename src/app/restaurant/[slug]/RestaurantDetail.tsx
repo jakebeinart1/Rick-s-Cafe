@@ -47,12 +47,12 @@ export function RestaurantDetail({ restaurant }: Props) {
             transition={{ delay: 0.4 }}
           >
             {/* Summary */}
-            <p className="mb-8 font-serif text-xl leading-relaxed text-muted md:text-2xl">
+            <p className="mb-8 font-heading text-xl leading-relaxed text-muted md:text-2xl">
               {restaurant.summary}
             </p>
 
             {/* Date */}
-            <p className="mb-8 text-xs uppercase tracking-widest text-muted">
+            <p className="mb-8 font-mono text-xs uppercase tracking-widest text-muted">
               Visited{" "}
               {new Date(restaurant.dateVisited).toLocaleDateString("en-US", {
                 year: "numeric",
@@ -95,7 +95,7 @@ export function RestaurantDetail({ restaurant }: Props) {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            <h2 className="mb-8 font-serif text-3xl font-bold">The Experience</h2>
+            <h2 className="mb-8 font-heading text-3xl font-bold">The Experience</h2>
             <Gallery images={restaurant.gallery.slice(1)} />
           </motion.section>
         )}

@@ -66,20 +66,21 @@ export function HorizontalTimeline({ restaurants }: Props) {
   return (
     <>
       {isMobile ? (
-        <div className="space-y-8 px-4 py-12">
+        <div className="divide-y divide-foreground/5 px-4 py-12">
           {restaurants.map((restaurant, i) => (
-            <TimelinePanel
-              key={restaurant._id}
-              restaurant={restaurant}
-              index={i}
-              imageUrl={MOCK_IMAGES[i % MOCK_IMAGES.length]}
-            />
+            <div key={restaurant._id} className="py-8 first:pt-0 last:pb-0">
+              <TimelinePanel
+                restaurant={restaurant}
+                index={i}
+                imageUrl={MOCK_IMAGES[i % MOCK_IMAGES.length]}
+              />
+            </div>
           ))}
         </div>
       ) : (
         <div ref={containerRef} className="relative overflow-hidden">
           {/* Horizontal timeline line */}
-          <div className="absolute top-1/2 left-0 z-20 h-px w-full -translate-y-1/2 bg-foreground/5" />
+          <div className="absolute top-1/2 left-0 z-20 h-px w-full -translate-y-1/2 bg-foreground/10" />
 
           <div
             ref={trackRef}
@@ -101,7 +102,7 @@ export function HorizontalTimeline({ restaurants }: Props) {
                 <p className="text-xs uppercase tracking-[0.3em] text-muted">
                   The journey continues
                 </p>
-                <p className="mt-4 font-serif text-3xl font-bold text-accent">
+                <p className="mt-4 font-mono text-3xl font-bold text-foreground/30">
                   ...
                 </p>
               </div>

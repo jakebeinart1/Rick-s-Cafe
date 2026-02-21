@@ -43,26 +43,24 @@ export function Gallery({ images }: GalleryProps) {
         {images.map((image, i) => (
           <motion.div
             key={image._key || i}
-            className="photo-vignette mb-4 break-inside-avoid cursor-pointer overflow-hidden rounded-lg"
+            className="mb-4 break-inside-avoid cursor-pointer overflow-hidden rounded-sm"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ delay: i * 0.05 }}
             onClick={() => openLightbox(i)}
-            whileHover={{ scale: 1.03 }}
+            whileHover={{ scale: 1.02 }}
           >
-            <div className="overflow-hidden">
-              <Image
-                src={urlFor(image).width(800).quality(80).url()}
-                alt={image.alt || image.caption || "Restaurant photo"}
-                width={800}
-                height={600}
-                className="h-auto w-full object-cover transition-transform duration-500 hover:scale-110"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              />
-            </div>
+            <Image
+              src={urlFor(image).width(800).quality(80).url()}
+              alt={image.alt || image.caption || "Restaurant photo"}
+              width={800}
+              height={600}
+              className="h-auto w-full object-cover"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            />
             {image.caption && (
-              <p className="relative z-10 mt-2 px-1 text-xs text-muted">{image.caption}</p>
+              <p className="mt-2 px-1 text-xs text-muted">{image.caption}</p>
             )}
           </motion.div>
         ))}
@@ -110,7 +108,7 @@ export function Gallery({ images }: GalleryProps) {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.2 }}
-                  className="photo-vignette relative max-h-[80vh] max-w-[90vw]"
+                  className="relative max-h-[80vh] max-w-[90vw]"
                 >
                   <Image
                     src={urlFor(images[lightboxIndex]).width(1600).quality(90).url()}
@@ -121,7 +119,7 @@ export function Gallery({ images }: GalleryProps) {
                     }
                     width={1600}
                     height={1200}
-                    className="max-h-[80vh] w-auto rounded-lg object-contain"
+                    className="max-h-[80vh] w-auto rounded-sm object-contain"
                     priority
                   />
                 </motion.div>
@@ -156,9 +154,9 @@ export function Gallery({ images }: GalleryProps) {
                   key={image._key || i}
                   onClick={() => setLightboxIndex(i)}
                   className={cn(
-                    "relative h-16 w-20 flex-shrink-0 overflow-hidden rounded transition-all",
+                    "relative h-16 w-20 flex-shrink-0 overflow-hidden rounded-sm transition-all",
                     i === lightboxIndex
-                      ? "ring-2 ring-accent"
+                      ? "ring-2 ring-white"
                       : "opacity-40 hover:opacity-70"
                   )}
                   aria-label={`View image ${i + 1}`}

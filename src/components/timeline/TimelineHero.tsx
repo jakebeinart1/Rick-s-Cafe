@@ -20,7 +20,7 @@ export function TimelineHero() {
       className="relative flex h-screen items-center justify-center overflow-hidden"
       style={{ background: "var(--background)" }}
     >
-      {/* Background food image with warm tint */}
+      {/* Background food image */}
       <motion.div
         className="absolute inset-0"
         style={{ scale: bgScale }}
@@ -30,20 +30,10 @@ export function TimelineHero() {
           style={{
             backgroundImage:
               "url(https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920&q=80)",
-            opacity: 0.12,
-            filter: "sepia(30%) saturate(120%)",
+            opacity: 0.06,
           }}
         />
       </motion.div>
-
-      {/* Vignette overlay */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse at center, transparent 30%, var(--background) 80%)",
-        }}
-      />
 
       {/* Gradient fade to bottom */}
       <div
@@ -54,33 +44,12 @@ export function TimelineHero() {
         }}
       />
 
-      {/* Bayou flowing line across the hero — subtle background motif */}
-      <svg
-        className="absolute inset-0 h-full w-full opacity-[0.04]"
-        viewBox="0 0 1000 600"
-        preserveAspectRatio="none"
-      >
-        <path
-          d="M -50,300 C 100,280 200,320 350,290 C 500,260 600,310 750,280 C 900,250 1000,290 1050,300"
-          fill="none"
-          stroke="var(--accent-gold)"
-          strokeWidth="2"
-        />
-        <path
-          d="M -50,340 C 150,320 250,360 400,330 C 550,300 650,350 800,320 C 950,290 1000,330 1050,340"
-          fill="none"
-          stroke="var(--accent)"
-          strokeWidth="1.5"
-        />
-      </svg>
-
       <motion.div
         className="relative z-10 text-center"
         style={{ y: titleY, opacity: titleOpacity }}
       >
         <motion.p
-          className="mb-6 text-xs uppercase tracking-[0.5em]"
-          style={{ color: "var(--accent-gold)", fontFamily: "var(--font-display-var)" }}
+          className="mb-6 font-mono text-xs uppercase tracking-[0.4em] text-muted"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
@@ -89,8 +58,7 @@ export function TimelineHero() {
         </motion.p>
 
         <motion.h1
-          className="font-serif text-[15vw] leading-[0.85] tracking-tight md:text-[12vw]"
-          style={{ fontStyle: "italic" }}
+          className="font-heading text-[15vw] font-bold leading-[0.85] tracking-tighter md:text-[12vw]"
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -99,9 +67,13 @@ export function TimelineHero() {
             ease: [0.22, 1, 0.36, 1],
           }}
         >
-          <span className="block">Rick&apos;s</span>
-          <span className="block text-accent">Caf&eacute;</span>
+          <span className="block text-foreground">Rick&apos;s</span>
+          <span className="block text-foreground">Caf&eacute;</span>
         </motion.h1>
+
+        <hr className="mx-auto mt-8 w-16 border-foreground/20" />
+
+        <p className="font-mono text-xs text-muted mt-4">Houston, TX — Est. 2018</p>
 
         <motion.p
           className="mx-auto mt-8 max-w-sm text-sm leading-relaxed text-muted md:max-w-md"
@@ -115,36 +87,12 @@ export function TimelineHero() {
 
         {/* Horizontal scroll indicator */}
         <motion.div
-          className="mt-16 flex items-center justify-center gap-3"
+          className="mt-16 flex items-center justify-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}
         >
-          <span className="text-xs uppercase tracking-widest text-muted">
-            Scroll
-          </span>
-          <motion.div
-            animate={{ x: [0, 10, 0] }}
-            transition={{
-              repeat: Infinity,
-              duration: 1.8,
-              ease: "easeInOut",
-            }}
-          >
-            <svg
-              width="24"
-              height="12"
-              viewBox="0 0 24 12"
-              fill="none"
-              className="text-accent"
-            >
-              <path
-                d="M0 6h20m0 0l-5-5m5 5l-5 5"
-                stroke="currentColor"
-                strokeWidth="1.5"
-              />
-            </svg>
-          </motion.div>
+          <span className="font-mono text-xs text-muted">scroll &rarr;</span>
         </motion.div>
       </motion.div>
     </div>

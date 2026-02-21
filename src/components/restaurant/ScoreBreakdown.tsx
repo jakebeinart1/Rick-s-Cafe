@@ -17,37 +17,24 @@ interface ScoreBreakdownProps {
 }
 
 const categories = [
-  { key: "taste", label: "Taste", color: "var(--accent-red)" },
-  { key: "vibe", label: "Vibe", color: "var(--accent-gold)" },
-  { key: "service", label: "Service", color: "var(--accent-teal)" },
-  { key: "value", label: "Value", color: "var(--accent)" },
+  { key: "taste", label: "Taste" },
+  { key: "vibe", label: "Vibe" },
+  { key: "service", label: "Service" },
+  { key: "value", label: "Value" },
 ] as const;
 
-function ScoreBar({
-  label,
-  score,
-  delay,
-  color,
-}: {
-  label: string;
-  score: number;
-  delay: number;
-  color: string;
-}) {
+function ScoreBar({ label, score, delay }: { label: string; score: number; delay: number }) {
   const percentage = (score / 10) * 100;
 
   return (
     <div className="space-y-2">
       <div className="flex items-center justify-between">
-        <span className="text-xs uppercase tracking-widest text-muted">{label}</span>
-        <span className="font-serif text-sm" style={{ fontStyle: "italic" }}>
-          {score}
-        </span>
+        <span className="font-mono text-xs uppercase tracking-widest text-muted">{label}</span>
+        <span className="font-mono text-sm font-semibold">{score}</span>
       </div>
-      <div className="h-1 w-full overflow-hidden rounded-full bg-foreground/5">
+      <div className="h-0.5 w-full overflow-hidden rounded-none bg-foreground/5">
         <motion.div
-          className="h-full rounded-full"
-          style={{ backgroundColor: color }}
+          className="h-full rounded-none bg-foreground"
           initial={{ width: 0 }}
           whileInView={{ width: `${percentage}%` }}
           viewport={{ once: true }}
@@ -63,44 +50,20 @@ export function ScoreBreakdown({ scores, rickFactor }: ScoreBreakdownProps) {
 
   return (
     <div className="space-y-8">
-      {/* Overall score — "Rick's Verdict" stamp */}
-      <div className="text-center">
+      {/* Overall score */}
+      <div>
         <motion.div
-          className="warm-glow inline-flex h-24 w-24 items-center justify-center rounded-full border-2"
-          style={{ borderColor: "var(--accent)" }}
-          initial={{ scale: 0, opacity: 0, rotate: -12 }}
-          whileInView={{ scale: 1, opacity: 1, rotate: 0 }}
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{
-            type: "spring",
-            stiffness: 300,
-            damping: 12,
-            delay: 0.1,
-          }}
+          transition={{ type: "spring", stiffness: 200, damping: 15 }}
         >
-          <span className="font-serif text-3xl" style={{ fontStyle: "italic", color: "var(--accent)" }}>
-            {overall.toFixed(1)}
-          </span>
+          <span className="font-mono text-5xl font-bold">{overall.toFixed(1)}</span>
         </motion.div>
-
-        {/* Stamp text */}
-        <motion.div
-          className="mt-3"
-          initial={{ opacity: 0, scale: 1.3, rotate: -3 }}
-          whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4, duration: 0.15, ease: "easeOut" }}
-        >
-          <p
-            className="text-[10px] font-bold uppercase tracking-[0.5em]"
-            style={{ color: "var(--accent)", fontFamily: "var(--font-display-var)" }}
-          >
-            Rick&apos;s Verdict
-          </p>
-        </motion.div>
+        <p className="mt-2 font-mono text-xs uppercase tracking-widest text-muted">Overall</p>
       </div>
 
-      {/* Individual scores with colored bars */}
+      {/* Individual scores */}
       <div className="space-y-4">
         {categories.map((cat, i) => (
           <ScoreBar
@@ -108,42 +71,30 @@ export function ScoreBreakdown({ scores, rickFactor }: ScoreBreakdownProps) {
             label={cat.label}
             score={scores[cat.key]}
             delay={i * 0.1}
-            color={cat.color}
           />
         ))}
       </div>
 
-      {/* The Rick Factor — branded card */}
+      {/* The Rick Factor */}
       <motion.div
         className={cn(
-          "noise-texture rounded-2xl border border-accent/20 bg-accent/5 p-6",
+          "border-l-2 border-accent pl-6 py-4",
           "space-y-3"
         )}
-        initial={{ opacity: 0, y: 20, scale: 0.95 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.5 }}
       >
-        <div className="relative z-10 flex items-center justify-between">
-          <span
-            className="text-xs font-bold uppercase tracking-widest text-accent"
-            style={{ fontFamily: "var(--font-display-var)" }}
-          >
+        <div className="flex items-center justify-between">
+          <span className="font-mono text-xs uppercase tracking-widest text-accent">
             The Rick Factor
           </span>
-          {/* Stamp-style score */}
-          <motion.span
-            className="font-serif text-2xl text-accent"
-            style={{ fontStyle: "italic" }}
-            initial={{ scale: 2, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.7, type: "spring", stiffness: 400, damping: 15 }}
-          >
+          <span className="font-mono text-2xl font-bold text-accent">
             {rickFactor.score}
-          </motion.span>
+          </span>
         </div>
-        <p className="relative z-10 text-sm leading-relaxed text-muted">
+        <p className="text-sm leading-relaxed text-muted">
           {rickFactor.description}
         </p>
       </motion.div>

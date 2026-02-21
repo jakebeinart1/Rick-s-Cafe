@@ -1,15 +1,14 @@
 import type { Metadata, Viewport } from "next";
-import { Instrument_Serif, Inter, Syne } from "next/font/google";
+import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import { Navigation } from "@/components/layout/Navigation";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { CustomCursor } from "@/components/layout/CustomCursor";
 import "./globals.css";
 
-const serif = Instrument_Serif({
-  variable: "--font-serif-var",
+const heading = Space_Grotesk({
+  variable: "--font-heading-var",
   subsets: ["latin"],
   display: "swap",
-  weight: "400",
 });
 
 const sans = Inter({
@@ -18,11 +17,10 @@ const sans = Inter({
   display: "swap",
 });
 
-const display = Syne({
-  variable: "--font-display-var",
+const mono = JetBrains_Mono({
+  variable: "--font-mono-var",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -32,7 +30,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#1a1410",
+  themeColor: "#f2ece4",
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
@@ -44,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${serif.variable} ${sans.variable} ${display.variable}`}>
+    <html lang="en" className={`${heading.variable} ${sans.variable} ${mono.variable}`}>
       <body className="antialiased">
         <SmoothScroll>
           <CustomCursor />
