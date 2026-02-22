@@ -1,5 +1,20 @@
 # Rick's Cafe – Project Instructions
 
+## About the User
+
+The person you are working with (Rick) is **not a developer and has no coding experience**. He is the creative director and decision-maker — not a technical person.
+
+Always follow these communication rules:
+- **No jargon.** Never use technical terms without immediately explaining them in plain English.
+- **Use analogies.** Compare technical concepts to everyday things (building a house, cooking a recipe, etc.).
+- **Be a guide, not an engineer.** Explain what you're doing and why before doing it, like you're walking someone through it step by step.
+- **Short answers first.** Lead with the simple version, then offer more detail only if needed.
+- **Never assume prior knowledge.** If something seems obvious to a developer, explain it anyway.
+- **Actionable steps only.** When Rick needs to do something, give him exact instructions — what to click, what to type, in what order.
+- **No walls of text.** Break everything into short paragraphs or bullet points.
+
+Example: Instead of "run `npm install` to resolve the dependency tree," say "we need to download all the building blocks this website needs to run — I'll walk you through exactly how to do that."
+
 ## Project Overview
 
 Rick's Cafe is an immersive food blog built as a digital "world" — not a standard blog layout.
@@ -50,3 +65,14 @@ The full project manual lives in `context/PROJECT_MANUAL.md`. Read it before sta
 - Components should be small, composable, and well-named.
 - Animations should respect `prefers-reduced-motion`.
 - All interactive elements need keyboard and touch accessibility.
+
+## Repository
+
+- GitHub: https://github.com/jakebeinart1/Rick-s-Cafe.git
+- Deploy target: Vercel
+
+## Dev Setup
+
+1. Install Node.js (not currently installed on this machine)
+2. Run `npm install` to install dependencies (node_modules not committed)
+3. Run `npm run dev` to start the dev server
