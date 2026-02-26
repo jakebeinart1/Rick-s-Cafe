@@ -49,7 +49,7 @@ export function Navigation() {
       </header>
 
       {/* Mobile: Bottom-docked navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-foreground/10 bg-background/90 backdrop-blur-xl rounded-t-lg md:hidden">
+      <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-accent-gold/25 bg-background/90 backdrop-blur-xl rounded-t-lg md:hidden">
         <div className="flex items-center justify-around py-2 pb-[env(safe-area-inset-bottom)]">
           {navItems.map((item) => {
             const Icon = item.icon;

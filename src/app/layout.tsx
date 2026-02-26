@@ -1,14 +1,16 @@
 import type { Metadata, Viewport } from "next";
-import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import { Cormorant_Garant, Inter, JetBrains_Mono } from "next/font/google";
 import { Navigation } from "@/components/layout/Navigation";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { CustomCursor } from "@/components/layout/CustomCursor";
 import "./globals.css";
 
-const heading = Space_Grotesk({
+const heading = Cormorant_Garant({
   variable: "--font-heading-var",
   subsets: ["latin"],
   display: "swap",
+  weight: ["400", "600", "700"],
+  style: ["normal", "italic"],
 });
 
 const sans = Inter({
@@ -30,7 +32,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f2ece4",
+  themeColor: "#1c1638",
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",

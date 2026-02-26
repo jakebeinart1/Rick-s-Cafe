@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f2ece4;
-  --background-secondary: #e8e0d4;
-  --foreground: #1a1a1a;
-  --accent: #c4553a;
-  --accent-red: #c4553a;
-  --accent-teal: #5a8f85;
-  --accent-gold: #b8956a;
-  --muted: #8a7e72;
+  --background: #1c1638;          /* Warm Houston haze — humid purple-indigo sky at peak sunset */
+  --background-secondary: #1e1620; /* Slightly deeper for card and panel backgrounds */
+  --foreground: #eedcbc;          /* Warm candlelight ivory — the color of a lit restaurant interior */
+  --accent: #e8892a;              /* Sunset amber — the glow on the horizon */
+  --accent-red: #c4532a;          /* Deeper burnt sienna — the richness just below the sun */
+  --accent-gold: #c9a96e;         /* Bamboo gold — polished bamboo cane, warm natural material */
+  --accent-teal: #8c5fa8;         /* Dusk violet — the upper sky above the sunset band */
+  --muted: #8a7868;               /* Warm mid-tone — secondary text, like warm shadow */
 }
 
 @theme inline {
@@ -48,7 +48,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(26, 26, 26, 0.2);
+  background: rgba(238, 220, 188, 0.15);
   border-radius: 3px;
 }
 

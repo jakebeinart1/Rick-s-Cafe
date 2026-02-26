@@ -20,27 +20,50 @@ export function TimelineHero() {
       className="relative flex h-screen items-center justify-center overflow-hidden"
       style={{ background: "var(--background)" }}
     >
-      {/* Background food image */}
+      {/* Houston sunset sky — hand-crafted gradient, no image required */}
       <motion.div
         className="absolute inset-0"
         style={{ scale: bgScale }}
       >
         <div
-          className="h-full w-full bg-cover bg-center"
+          className="h-full w-full"
           style={{
-            backgroundImage:
-              "url(https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920&q=80)",
-            opacity: 0.06,
+            background: `
+              radial-gradient(ellipse 220% 38% at 50% 87%, rgba(232,137,42,0.40) 0%, rgba(212,96,26,0.28) 28%, rgba(140,95,168,0.10) 58%, transparent 75%),
+              linear-gradient(
+                to bottom,
+                #1a2240 0%,
+                #1f1a3a 12%,
+                #2e1848 24%,
+                #4a1e40 36%,
+                #6b2a30 48%,
+                #8b3a20 58%,
+                #c4621a 68%,
+                #e8892a 76%,
+                #d4a030 83%,
+                #8a5210 90%,
+                #1a1208 97%,
+                #0d0d08 100%
+              )
+            `,
           }}
         />
       </motion.div>
 
-      {/* Gradient fade to bottom */}
+      {/* Amber horizon glow — the sun just below the skyline */}
+      <div
+        className="absolute inset-x-0 bottom-0 h-2/3 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 85% 35% at 50% 100%, rgba(232,137,42,0.10) 0%, transparent 65%)",
+        }}
+      />
+
+      {/* Fade into page background at bottom */}
       <div
         className="absolute inset-x-0 bottom-0 h-1/3"
         style={{
-          background:
-            "linear-gradient(to top, var(--background), transparent)",
+          background: "linear-gradient(to top, var(--background), transparent)",
         }}
       />
 
@@ -71,7 +94,7 @@ export function TimelineHero() {
           <span className="block text-foreground">Caf&eacute;</span>
         </motion.h1>
 
-        <hr className="mx-auto mt-8 w-16 border-foreground/20" />
+        <hr className="mx-auto mt-8 w-16 border-accent-gold/50" />
 
         <p className="font-mono text-xs text-muted mt-4">Houston, TX — Est. 2018</p>
 
